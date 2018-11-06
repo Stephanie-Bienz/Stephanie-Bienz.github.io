@@ -11,9 +11,14 @@
 	            padding: 50px 50px 50px 50px;
                 border-style: solid;
                 border-width: 2px;
+                background: whitesmoke;
             }
             h2 {
                 text-align: center;
+            }
+            p {
+                font-size: 18px;
+                text-align: justify;
             }
             #map_view {
 	            display: inline-block;
@@ -31,16 +36,6 @@
                 width: 575px;
                 height: 450px;
             }
-            div.tooltip {
-                position: absolute; 
-                text-align: center;
-                padding: 2px;
-                font: 10px sans-serif; 
-                background: lightcyan;
-                border-color: black;
-                border: 1px;
-                pointer-events: none;
-            }
             .axis path,
             .axis line {
                 fill: none;
@@ -48,30 +43,35 @@
                 shape-rendering: crispEdges;
                 stroke-width: 1px;
             }
-            .grid line {
-                stroke: lightgrey; 
-                stroke-opacity: 0.5; 
-                shape-rendering: crispEdges;
-            }
-            .grid path { 
-                stroke-width: 0;
-            }
         </style>
     </head>
     <body>
         <div class="container">
-            <h2>Homework #3
+            <h2>Worldwide Significant Earthquakes
             <br>Author: Stephanie Bienz
             <br>October 15, 2018
-            <br>CSE 578: Data Visualization</h2>
-            <!--<script src="d3.min.js"></script>-->
+            <br>CSE 578: Data Visualization HW #3</h2>
+
             <script src='http://d3js.org/d3.v3.min.js'></script>
-            <script src='http://d3js.org/topojson.v1.min.js'></script>
-            <script src='http://datamaps.github.io/scripts/datamaps.all.min.js'></script>
+            
+            <p>
+                    For my third homework assignment in Data Visualization, I was tasked with choosing a geographical dataset to visualize on a pair of interactive charts. I chose <a href="https://www.kaggle.com/usgs/earthquake-database" target="_blank">Significant Earthquakes, 1965-2016</a> reported from the USGS. This dataset contains the metadata (latitude, longitude, date, etc.) of every earthquake with a magnitude larger than 5.5 since 1965. When you hover over a <b><span style="color:indigo;">indigo</span></b> point on either chart, that point as well as the the corresponding point will increase in size and color the point <b><span style="color:aquamarine;">aquamarine</span></b>.</p>
 
             <div id="map_view"></div>
             <div id="detail_view"></div>
             <script src="charts.js"></script>
+
+            <p>
+                The overview visualization (left) is a map created using the JavaScript library <a href="https://www.mapbox.com/mapbox-gl-js/api/" target="_blank">Mapbox GL JS</a>. In order to create the visualization, I created a data attribute layer which was appended to the map view. The latitude and longitude of each earthquake reported was then appended to the data attribute layer to create the purple dots you see all over the map. This map library allows the user to zoom in and drag the map, which I think is a nice feature to have since it allows the user to drill down into specific areas to see more detail. One example where this would be useful is the Samoa/Fiji area on the very left edge of the map, as there are lots of earthquakes that have occurred there and thus is difficult to extrapolate individual data points when looking at the initial scale. </p>
+
+            <p>
+                The detail view visualization (right) is a scatterplot displaying the depth of the earthquake in kilometers versus the magnitude of the earthquake reported. I believe that using this method provides the user with a very quick way to gauge the severity of an earthquake they hover over on the map. I decided to make the hover interaction bi-directional so that the user was able to not only to see the detail when they hover over a geographical point the map, but also choose an interesting outlier on the scatterplot and see where it is located geographically. If I would have thought about it sooner, I would have loved to update the scatterplot as the user zooms in to the map to only plot points that are in the current scope of the map.</p>
+
+            <p>
+                <i>* Fun Fact: When I was looking at the map visualization, it scratched the geography component of my brain. I found this map showing the boundaries of the Earth's tectonic plates, which are eerily similar to the picture that the map visualization paints. With this correspondence, I was able to see that a vast majority of all earthquakes occur along the plate boundaries, which makes sense when you consider subduction zones and transform faults that occur along these boundaries. *</i><br><br>
+                <img src="https://stephanie-bienz.github.io/Homework3/plates.jpg" style="width:50%;">
+                <br><a href="https://www.learner.org/interactives/dynamicearth/tectonicsmap/" target="_blank">Image Source</a>
+            </p>
         </div> 
     </body>
 </html>
