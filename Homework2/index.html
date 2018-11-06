@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+    <head>
+        <style>
+            .container {
+	            width: 1200px;
+	            margin: 25px auto 25px auto;
+	            padding: 50px 50px 50px 50px;
+            }
+            h2 {
+                text-align: center;
+            }
+            #overview {
+	            display: inline-block;
+            }
+            #detail {
+	            display: inline-block;
+            }
+            .line {
+                fill: none;
+                stroke: steelblue;
+                stroke-width: 2px;
+            }
+            .axis path,
+            .axis line {
+                fill: none;
+                stroke: #000;
+                shape-rendering: crispEdges;
+            }
+            .dot {
+                stroke: #000;
+            }
+            .grid line {
+                stroke: lightgrey; 
+                stroke-opacity: 0.5; 
+                shape-rendering: crispEdges;
+            }
+            .grid path { 
+                stroke-width: 0;
+            }
+            div.tooltip {
+                position: absolute; 
+                text-align: center;
+                padding: 2px;
+                font: 10px sans-serif; 
+                background: lightcyan;
+                border-color: black;
+                border: 1px;
+                pointer-events: none;
+            }
+            .bar {
+                fill: lightseagreen;
+            }
+            .bar2 {
+                fill: powderblue;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Australian Open Professional Men's Tennis
+            <br>Author: Stephanie Bienz
+            <br>September 17, 2018
+            <br>CSE 578: Data Visualization</h2>
+            <div id="overview"></div>
+            <div id="detail"></div>
+            <input type="hidden" name="smname" id="smname" />
+            <script src="d3.min.js"></script>
+            <script src="charts.js"></script>
+            <form id="form">
+                    <input type="radio" name="pStats" value="firstServe" checked="checked">First Serve<br>
+                    <input type="radio" name="pStats" value="firstPointWon" >First Point Won<br>
+                    <input type="radio" name="pStats" value="secPointWon">Second Point Won<br>
+                    <input type="radio" name="pStats" value="break">Break<br>
+                    <input type="radio" name="pStats" value="return">Return<br>
+                    <input type="radio" name="pStats" value="net">Net
+            </form>
+            <p>
+                In the "Overview" chart to the left, I have created a scatterplot of the total points won for the winner and the loser for every single match in the dataset. When you hover over any point, you will see the winner name (total) vs. loser name (total) for that particular match. If you click on the point, the "Detail" chart to the right will display the statistics of each player for that match. These statistics can be changed by the radio buttons, and the default is set to the First Serve percentage. In order to change the detail view, you must first change the radio button selection, then click on the data point you are interested in. 
+                <strong><br><br> Note that the default "Detail" chart is the first record in the dataset, and that null values are simply displayed as 0.</strong>
+            </p>
+        </div> 
+    </body>
+</html>
